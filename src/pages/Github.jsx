@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
-const url = "https://api.github.com/users/ayushraj6202"
+const url = "https://github.com/Alekh-Srivastava"
 export default function Github(){
     const [data,setData] = useState({})
     const apicall= function (){

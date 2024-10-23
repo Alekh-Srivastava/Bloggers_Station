@@ -8,18 +8,22 @@ import authService from "../appWrite/auth"
 import Loading from "./Loading"
 
 export default function Signup() {
-    // console.log("sign up actual");
+    console.log("sign up actual");
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [error,setError] = useState('')
     const { register,handleSubmit } = useForm()
     const [loading,setloading] = useState(false);
     const create = async (data) => {
+        console.log(data);
+        
         setError('')
         try {
             const user = await authService.createAccount(data)
+            console.log("user ",user);
+            
             if (user) {
-                setloading(true)
+                // setloading(true)
                 const userData = await authService.getCurrentUser()
                 if (userData) {
                     dispatch(authLogin(userData))

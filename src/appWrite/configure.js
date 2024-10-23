@@ -14,27 +14,43 @@ export class Service{
         this.bucket = new Storage(this.client);
     }
 
-    async createPost({title,slug,content,featuredImage,status,userId}){
+    async createPost({ title, slug, content, featuredImage, status, userId }) {
         try {
-            // console.log(featuredImage);
-            return await this.database.createDocument(
+            console.log("Creating post with the following data:", {
+                title,
+                slug,
+                content,
+                featuredImage,
+                status,
+                userId,
+            });
+    
+            // Ensure userId is passed properly
+            if (!userId) {
+                throw new Error("Missing required field: userId");
+            }
+    
+            // Create the document in Appwrite
+            const response = await this.database.createDocument(
                 config.appwriteDatabaseId,
                 config.appwriteCollectionId,
-                slug,
+                slug, // Ensure slug is unique for each post
                 {
                     title,
                     content,
                     featuredImage,
                     status,
-                    userId
+                    userId,
                 }
-            )
+            );
+    
+            console.log("Post created successfully:", response);
+            return response;
         } catch (error) {
-            console.log("Appwrite :: createPost :: error ",error);
+            console.log("Appwrite :: createPost :: error ", error.message, error); // More detailed error logging
             return false;
         }
     }
-
     async updatePost(slug,{title,content,featuredImage,status}){
         try {
             return await this.database.updateDocument(

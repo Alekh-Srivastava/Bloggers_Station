@@ -14,7 +14,7 @@ function Footer() {
               </div>
               <div>
                 <p className="text-sm text-gray-600">
-                  &copy; Copyright 2024. All Rights Reserved by AYUSH RAJ.
+                  &copy; Copyright 2024. All Rights Reserved by Alekh Srivastava.
                 </p>
               </div>
             </div>
@@ -28,7 +28,7 @@ function Footer() {
                 <li className="mb-4">
                   <Link
                     className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/github"
+                    to=""
                   >
                     Github
                   </Link>

@@ -16,11 +16,14 @@ function Home() {
                 if (posts) {
                     setPosts(posts.documents);
                     setLoading(false)
+                }else{
+                    setLoading(false)
                 }
             });
         }
     }, []);
-
+    console.log(loading);
+    
     if(loading)
     {
         return <Loading/>
